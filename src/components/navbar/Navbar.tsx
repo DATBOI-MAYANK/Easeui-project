@@ -49,6 +49,7 @@ const Navbar = forwardRef<HTMLElement, NavbarProps>(
       asChild = false,
       animation = "fadeIn",
       hoverAnimation = "none",
+      children,
       ...props
     },
     ref
@@ -87,15 +88,19 @@ const Navbar = forwardRef<HTMLElement, NavbarProps>(
         onMouseLeave={handleMouseLeave}
         {...props}
       >
-        <h1>Logo</h1>
-        <div className="flex gap-5">
-          <a href="">Home</a>
-          <a href="">About</a>
-          <a href="">Customer</a>
-        </div>
-        <div>
-          <Button hoverAnimation="none">Profile</Button>
-        </div>
+        {children ?? (
+          <>
+            <h1>Logo</h1>
+            <div className="flex gap-5">
+              <a href="">Home</a>
+              <a href="">About</a>
+              <a href="">Customer</a>
+            </div>
+            <div>
+              <Button hoverAnimation="none">Profile</Button>
+            </div>
+          </>
+        )}
       </Comp>
     );
   }
